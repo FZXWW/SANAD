@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 565" role="img" aria-labelledby="title desc">
-  <title id="title">SANAD Invest logo</title>
-  <desc id="desc">SANAD INVEST logo with a palm tree, rising bars, and upward arrow.</desc>
+  <title id="title">SANAD INVEST</title>
+  <desc id="desc">SANAD INVEST logo with palm tree, investment bars, and upward arrow.</desc>
   <rect width="430" height="565" fill="#ffffff"/>
-  <g fill="#0d5949">
-    <path d="M214 36c16 22 17 52 5 78 24-33 65-47 107-40-41 16-72 38-92 68 38-25 83-26 124-11-49 9-88 27-116 56 35-16 73-16 112-1-48 8-86 23-115 47v64h-28v-65c-31-24-70-39-116-46 38-15 76-15 111 1-28-29-67-47-116-56 41-15 86-14 124 11-20-30-51-52-92-68 42-7 83 7 107 40-12-26-11-56 5-78z"/>
-    <path d="M210 93h28v204h-28z"/>
+  <g fill="#0b5a49">
+    <path d="M214 39c17 28 17 57 2 86 28-43 74-60 122-49-50 16-88 44-108 83 45-37 99-45 150-25-57 13-103 38-133 75 43-24 93-26 141-5-55 8-101 25-138 56v52h-33v-84c-24-17-53-27-88-32 32-16 65-17 99-5-32-31-77-47-135-50 43-24 93-22 143 6-20-37-54-62-103-75 47-13 88 3 119 47-11-32-10-59 12-80z"/>
+    <path d="M203 113h31v201h-31z"/>
   </g>
-  <g fill="#0d5949">
-    <path d="M132 294h34v48h-34z"/>
-    <path d="M184 268h34v74h-34z"/>
-    <path d="M236 230h35v112h-35z"/>
-    <path d="M110 285c74-35 128-80 174-141l-25-5 59-34-5 69-19-19c-49 64-105 111-181 145z"/>
+  <g fill="#0b5a49">
+    <path d="M126 303h39v49h-39z"/>
+    <path d="M181 277h39v75h-39z"/>
+    <path d="M236 237h40v115h-40z"/>
+    <path d="M106 294c75-37 134-86 183-151l-29-5 67-39-7 78-20-20c-53 68-115 119-191 151z"/>
   </g>
-  <text x="215" y="438" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="83" font-weight="900" letter-spacing="4" fill="#0d5949">SANAD</text>
-  <text x="215" y="514" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="12" fill="#0d5949">INVEST</text>
+  <text x="215" y="438" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="3" fill="#0b5a49">SANAD</text>
+  <text x="215" y="515" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="12" fill="#0b5a49">INVEST</text>
 </svg>
