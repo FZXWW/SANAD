@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SANAD Invest AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero-shell">
+        <nav class="topbar" aria-label="Main navigation">
+          <a class="brand" href="/">
+            <img src="{{ url_for('static', filename='sanad-logo.svg') }}" alt="SANAD Invest logo" />
+            <span>SANAD INVEST</span>
+          </a>
+          <div class="nav-links">
+            <a href="#profileForm" data-i18n="navStart">ابدأ التحليل</a>
+            <a href="#resultPanel" data-i18n="navResult">النتيجة</a>
+            <button type="button" id="languageBtn" class="language-btn">English</button>
+          </div>
+        </nav>
+
+        <header class="hero">
+          <img class="hero-logo" src="{{ url_for('static', filename='sanad-logo.svg') }}" alt="SANAD Invest logo" />
+          <p class="eyebrow">SANAD Invest AI</p>
+          <h1 data-i18n="heroTitle">خلّ الذكاء الاصطناعي يساعدك تختار استثمارك الأنسب</h1>
+          <p class="lead" data-i18n="heroLead">
+            أدخل بياناتك، والنظام يقارن بين الودائع، الصناديق السعودية، الأسهم السعودية،
+            الأسهم الأمريكية، والمحفظة المختلطة.
+          </p>
+          <a class="hero-action" href="#profileForm" data-i18n="heroAction">ابدأ الآن</a>
+        </header>
+
+        <section class="status-panel">
+          <span id="statusDot" class="status-dot"></span>
+          <div>
+            <strong id="statusTitle" data-i18n="statusTrainingTitle">جاري تجهيز النماذج</strong>
+            <p id="statusText" data-i18n="statusTrainingText">يتم تدريب نماذج الذكاء الاصطناعي مرة واحدة عند تشغيل الموقع.</p>
+          </div>
+        </section>
+
+        <section class="workspace">
+          <form id="profileForm" class="form-panel">
+            <div class="panel-heading">
+              <h2 data-i18n="formTitle">بياناتك</h2>
+              <button type="button" id="sampleBtn" data-i18n="sample">تعبئة مثال</button>
+            </div>
+
+            <label>
+              <span data-i18n="age">العمر</span>
+              <input name="age" type="number" min="18" max="90" value="35" required />
+            </label>
+
+            <label>
+              <span data-i18n="monthlyIncome">الدخل الشهري بالريال</span>
+              <input name="monthly_income" type="number" min="0" step="500" value="12000" required />
+            </label>
+
+            <label>
+              <span data-i18n="capital">رأس المال الاستثماري</span>
+              <input name="investment_capital" type="number" min="1000" step="1000" value="150000" required />
+            </label>
+
+            <label>
+              <span data-i18n="duration">مدة الاستثمار</span>
+              <select name="investment_horizon" required>
+                <option value="short" data-i18n="durationShort">قريب، أحتاج المبلغ بسرعة</option>
+                <option value="medium" selected data-i18n="durationMedium">فترة متوسطة</option>
+                <option value="long" data-i18n="durationLong">فترة طويلة، ما أحتاجه قريب</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="risk">تحمل المخاطر</span>
+              <select name="risk_tolerance" required>
+                <option value="low" data-i18n="low">منخفض</option>
+                <option value="medium" selected data-i18n="medium">متوسط</option>
+                <option value="high" data-i18n="high">مرتفع</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="goal">الهدف الاستثماري</span>
+              <select name="investment_goal" required>
+                <option value="income" data-i18n="income">دخل ثابت</option>
+                <option value="balanced" selected data-i18n="balanced">توازن</option>
+                <option value="growth" data-i18n="growth">نمو رأس المال</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="experience">مستوى الخبرة</span>
+              <select name="experience_level" required>
+                <option value="beginner" selected data-i18n="beginner">مبتدئ</option>
+                <option value="intermediate" data-i18n="intermediate">متوسط</option>
+                <option value="advanced" data-i18n="advanced">متقدم</option>
+              </select>
+            </label>
+
+            <label>
+              <span data-i18n="liquidity">الحاجة للسيولة</span>
+              <select name="liquidity_need" required>
+                <option value="high" data-i18n="liquidityHigh">مرتفعة</option>
+                <option value="medium" selected data-i18n="liquidityMedium">متوسطة</option>
+                <option value="low" data-i18n="liquidityLow">منخفضة</option>
+              </select>
+            </label>
+
+            <button id="submitBtn" class="primary-btn" type="submit" disabled data-i18n="submit">اعرض التوصية</button>
+          </form>
+
+          <section id="resultPanel" class="result-panel" aria-live="polite">
+            <div id="emptyState" class="empty-state">
+              <img src="{{ url_for('static', filename='sanad-logo.svg') }}" alt="SANAD Invest logo" />
+              <h2 data-i18n="emptyTitle">النتيجة بتطلع هنا</h2>
+              <p data-i18n="emptyText">بعد ما تكتمل النماذج، أرسل بياناتك وراح تظهر لك التوصية وقائمة الخيارات المناسبة.</p>
+            </div>
+
+            <div id="resultContent" class="hidden">
+              <div class="recommendation-head">
+                <div>
+                  <p class="eyebrow" data-i18n="recommendedArea">المجال المقترح</p>
+                  <h2 id="categoryTitle"></h2>
+                </div>
+                <div class="confidence">
+                  <span id="confidenceValue">0%</span>
+                  <small data-i18n="confidence">ثقة النموذج</small>
+                </div>
+              </div>
+
+              <div id="cards" class="cards"></div>
+              <div id="models" class="models"></div>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>

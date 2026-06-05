@@ -1,0 +1,82 @@
+Files needed for the web version
+================================
+
+1. Main AI system file:
+   - SANAD_AI_FULL_SYSTEM.py
+
+2. Full datasets folder:
+   - datasets/
+
+3. Required extra data folder:
+   - SA_Investment_Funds/
+
+4. Main reference notebooks, optional but useful for understanding the AI approach:
+   - User_Profile/User_Profile.ipynb
+   - SA_Stocks_Market/Saudi_Stock_Market.ipynb
+   - SA_Investment_Funds/SA_Investment_Funds.ipynb
+   - US_Stock_Market/US_Stock_Market.ipynb
+
+5. Required Python packages:
+   - pandas
+   - numpy
+   - scikit-learn
+
+
+Suggested web implementation
+============================
+
+Use Python backend because the AI system is already written in Python.
+
+Recommended backend:
+   - FastAPI or Flask
+
+Recommended frontend:
+   - Any simple frontend: HTML/CSS/JavaScript, React, or similar
+
+How the website should work:
+
+1. The user fills a form with these fields:
+   - age
+   - monthly_income
+   - investment_capital
+   - investment_horizon
+   - risk_tolerance
+   - investment_goal
+   - preferred_market
+   - experience_level
+   - liquidity_need
+
+2. The frontend sends the form data to the backend as JSON.
+
+3. The backend imports the AI system:
+
+   from SANAD_AI_FULL_SYSTEM import SanadAIFullSystem
+
+4. When the backend starts, train the full system once:
+
+   system = SanadAIFullSystem()
+   system.train_all()
+
+5. Create an API endpoint:
+
+   POST /recommend
+
+6. Inside the endpoint, call:
+
+   result = system.recommend(user_profile)
+
+7. Return these values to the frontend:
+   - recommended_category
+   - category_confidence
+   - final_recommendations
+
+8. The frontend displays:
+   - the recommended investment category
+   - the AI confidence
+   - the final recommended deposits, Saudi stocks, Saudi funds, US stocks, or mixed portfolio
+
+
+Important note
+==============
+
+Keep SANAD_AI_FULL_SYSTEM.py, datasets/, and SA_Investment_Funds/ in the same main project folder.

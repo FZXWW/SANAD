@@ -1,0 +1,150 @@
+How the code works
+==================
+
+The main file is:
+
+SANAD_AI_FULL_SYSTEM.py
+
+The idea is that the system works in two stages.
+
+
+Stage 1: Decision AI
+====================
+
+The first AI model takes the user profile.
+
+The user profile includes:
+
+- age
+- monthly_income
+- investment_capital
+- investment_horizon
+- risk_tolerance
+- investment_goal
+- preferred_market
+- experience_level
+- liquidity_need
+
+This AI model decides the best investment category for the user.
+
+The possible categories are:
+
+- Deposits
+- Saudi_Funds
+- Saudi_Stocks
+- US_Stocks
+- Mixed
+
+This stage is based on the AI work from:
+
+User_Profile.ipynb
+
+
+Stage 2: Investment AI
+======================
+
+After the first model chooses the category, the system runs the AI model for that specific category.
+
+If the category is Saudi_Stocks:
+
+The system uses the Saudi stocks AI model from:
+
+Saudi_Stock_Market.ipynb
+
+If the category is Saudi_Funds:
+
+The system uses the Saudi funds AI model from:
+
+SA_Investment_Funds.ipynb
+
+If the category is US_Stocks:
+
+The system uses the US stocks AI model from:
+
+US_Stock_Market.ipynb
+
+If the category is Deposits:
+
+The system uses deposit product matching from:
+
+SA_Deposit_Products.csv
+
+If the category is Mixed:
+
+The system returns recommendations from more than one investment category.
+
+
+Main flow
+=========
+
+User Profile
+↓
+Decision AI
+↓
+Recommended Category
+↓
+Specific Investment AI
+↓
+Final Recommendation
+
+
+Main class
+==========
+
+The full system is inside this class:
+
+SanadAIFullSystem
+
+To use it:
+
+from SANAD_AI_FULL_SYSTEM import SanadAIFullSystem
+
+system = SanadAIFullSystem()
+system.train_all()
+
+The function train_all() trains all AI models:
+
+- User Profile AI
+- Saudi Stocks AI
+- Saudi Funds AI
+- US Stocks AI
+
+
+Recommendation function
+=======================
+
+After training, use:
+
+result = system.recommend(user_profile)
+
+The result includes:
+
+- recommended_category
+- category_confidence
+- final_recommendations
+
+
+Example
+=======
+
+If the user profile is suitable for US stocks:
+
+The first AI model predicts:
+
+US_Stocks
+
+Then the system runs the US Stocks AI model.
+
+The final output will be specific US stock recommendations.
+
+
+Summary
+=======
+
+The code does not recommend an investment directly from the beginning.
+
+First, it decides the best investment category for the user.
+
+Second, it runs the AI model for that category.
+
+Finally, it returns the actual recommended investment options.
