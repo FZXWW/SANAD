@@ -6,6 +6,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+import joblib
 
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
@@ -21,6 +22,8 @@ from sklearn.tree import DecisionTreeClassifier
 
 ROOT = Path(__file__).resolve().parent
 DATASETS_DIR = ROOT / "datasets"
+CACHE_DIR = ROOT / "model_cache"
+CACHE_FILE = CACHE_DIR / "sanad_ai_cache_mlp_gb_v2.joblib"
 
 
 @dataclass
@@ -110,6 +113,20 @@ def user_profile_models() -> dict[str, Any]:
             bootstrap=True,
             random_state=42,
         ),
+        "Gradient Boosting": GradientBoostingClassifier(
+            n_estimators=80,
+            learning_rate=0.05,
+            subsample=0.8,
+            max_depth=3,
+            random_state=42,
+        ),
+        "MLP (Deep Learning)": MLPClassifier(
+            hidden_layer_sizes=(100, 100),
+            alpha=0.1,
+            solver="adam",
+            max_iter=1000,
+            random_state=42,
+        ),
     }
 
 
@@ -118,6 +135,14 @@ def stock_models() -> dict[str, Any]:
         "Logistic Regression": LogisticRegression(C=1, solver="lbfgs", max_iter=1200),
         "Decision Tree": DecisionTreeClassifier(max_depth=5, min_samples_split=5, min_samples_leaf=2),
         "Random Forest": RandomForestClassifier(n_estimators=40, max_depth=8, min_samples_split=5),
+        "Gradient Boosting": GradientBoostingClassifier(n_estimators=80, learning_rate=0.03, max_depth=3),
+        "MLP (Deep Learning)": MLPClassifier(
+            hidden_layer_sizes=(128, 64),
+            alpha=0.01,
+            learning_rate_init=0.01,
+            max_iter=500,
+            random_state=42,
+        ),
     }
 
 
@@ -130,6 +155,19 @@ def fund_models() -> dict[str, Any]:
             max_depth=8,
             max_features="sqrt",
             bootstrap=True,
+        ),
+        "Gradient Boosting": GradientBoostingClassifier(
+            n_estimators=80,
+            learning_rate=0.05,
+            subsample=0.8,
+            max_depth=3,
+        ),
+        "MLP (Deep Learning)": MLPClassifier(
+            hidden_layer_sizes=(100, 100),
+            alpha=0.1,
+            solver="adam",
+            max_iter=1000,
+            random_state=42,
         ),
     }
 
@@ -552,10 +590,36 @@ class SanadAIFullSystem:
         self.us_stock_data: pd.DataFrame | None = None
 
     def train_all(self) -> None:
+        if CACHE_FILE.exists():
+            payload = joblib.load(CACHE_FILE)
+            self.user_ai = payload["user_ai"]
+            self.saudi_stock_ai = payload["saudi_stock_ai"]
+            self.fund_ai = payload["fund_ai"]
+            self.us_stock_ai = payload["us_stock_ai"]
+            self.saudi_stock_data = payload["saudi_stock_data"]
+            self.fund_data = payload["fund_data"]
+            self.us_stock_data = payload["us_stock_data"]
+            return
+
         self.user_ai = train_user_profile_ai()
         self.saudi_stock_ai, self.saudi_stock_data = train_saudi_stock_ai()
         self.fund_ai, self.fund_data = train_fund_ai()
         self.us_stock_ai, self.us_stock_data = train_us_stock_ai()
+
+        CACHE_DIR.mkdir(exist_ok=True)
+        joblib.dump(
+            {
+                "user_ai": self.user_ai,
+                "saudi_stock_ai": self.saudi_stock_ai,
+                "fund_ai": self.fund_ai,
+                "us_stock_ai": self.us_stock_ai,
+                "saudi_stock_data": self.saudi_stock_data,
+                "fund_data": self.fund_data,
+                "us_stock_data": self.us_stock_data,
+            },
+            CACHE_FILE,
+            compress=3,
+        )
 
     def model_results(self) -> dict[str, pd.DataFrame]:
         return {
