@@ -96,7 +96,7 @@ def train_models(
 
 def user_profile_models() -> dict[str, Any]:
     return {
-        "Logistic Regression": LogisticRegression(C=0.5, solver="saga", max_iter=5000),
+        "Logistic Regression": LogisticRegression(C=0.5, solver="saga", max_iter=1200),
         "Decision Tree": DecisionTreeClassifier(
             max_depth=12,
             min_samples_leaf=10,
@@ -104,24 +104,10 @@ def user_profile_models() -> dict[str, Any]:
             random_state=42,
         ),
         "Random Forest": RandomForestClassifier(
-            n_estimators=300,
+            n_estimators=80,
             max_depth=8,
             max_features="sqrt",
             bootstrap=True,
-            random_state=42,
-        ),
-        "Gradient Boosting": GradientBoostingClassifier(
-            n_estimators=150,
-            learning_rate=0.05,
-            subsample=0.8,
-            max_depth=4,
-            random_state=42,
-        ),
-        "MLP (Deep Learning)": MLPClassifier(
-            hidden_layer_sizes=(100, 100),
-            alpha=0.1,
-            solver="adam",
-            max_iter=1000,
             random_state=42,
         ),
     }
@@ -129,40 +115,21 @@ def user_profile_models() -> dict[str, Any]:
 
 def stock_models() -> dict[str, Any]:
     return {
-        "Logistic Regression": LogisticRegression(C=1, solver="lbfgs", max_iter=3000),
+        "Logistic Regression": LogisticRegression(C=1, solver="lbfgs", max_iter=1200),
         "Decision Tree": DecisionTreeClassifier(max_depth=5, min_samples_split=5, min_samples_leaf=2),
-        "Random Forest": RandomForestClassifier(n_estimators=100, max_depth=10, min_samples_split=5),
-        "Gradient Boosting": GradientBoostingClassifier(n_estimators=200, learning_rate=0.01, max_depth=5),
-        "MLP (Deep Learning)": MLPClassifier(
-            hidden_layer_sizes=(256, 128),
-            alpha=0.01,
-            learning_rate_init=0.01,
-            max_iter=500,
-        ),
+        "Random Forest": RandomForestClassifier(n_estimators=40, max_depth=8, min_samples_split=5),
     }
 
 
 def fund_models() -> dict[str, Any]:
     return {
-        "Logistic Regression": LogisticRegression(C=0.5, solver="saga", max_iter=5000),
+        "Logistic Regression": LogisticRegression(C=0.5, solver="saga", max_iter=1200),
         "Decision Tree": DecisionTreeClassifier(max_depth=12, min_samples_leaf=10, criterion="entropy"),
         "Random Forest": RandomForestClassifier(
-            n_estimators=300,
+            n_estimators=80,
             max_depth=8,
             max_features="sqrt",
             bootstrap=True,
-        ),
-        "Gradient Boosting": GradientBoostingClassifier(
-            n_estimators=150,
-            learning_rate=0.05,
-            subsample=0.8,
-            max_depth=4,
-        ),
-        "MLP (Deep Learning)": MLPClassifier(
-            hidden_layer_sizes=(100, 100),
-            alpha=0.1,
-            solver="adam",
-            max_iter=1000,
         ),
     }
 
