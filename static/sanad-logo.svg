@@ -1,17 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 565" role="img" aria-labelledby="title desc">
   <title id="title">SANAD INVEST</title>
-  <desc id="desc">SANAD INVEST logo with palm tree, investment bars, and upward arrow.</desc>
+  <desc id="desc">SANAD INVEST logo with a palm tree, clear upward arrow, and investment bars.</desc>
   <rect width="430" height="565" fill="#ffffff"/>
-  <g fill="#0b5a49">
-    <path d="M214 39c17 28 17 57 2 86 28-43 74-60 122-49-50 16-88 44-108 83 45-37 99-45 150-25-57 13-103 38-133 75 43-24 93-26 141-5-55 8-101 25-138 56v52h-33v-84c-24-17-53-27-88-32 32-16 65-17 99-5-32-31-77-47-135-50 43-24 93-22 143 6-20-37-54-62-103-75 47-13 88 3 119 47-11-32-10-59 12-80z"/>
-    <path d="M203 113h31v201h-31z"/>
+
+  <g fill="#0b5948">
+    <path d="M214 45c18 30 18 58 0 88-17-30-17-58 0-88z"/>
+    <path d="M203 122h29v149h-29z"/>
+    <path d="M213 121c-34-45-77-68-130-57 52 12 94 31 127 70z"/>
+    <path d="M216 121c35-45 78-68 131-57-52 12-94 31-128 70z"/>
+    <path d="M212 143c-52-38-105-47-159-21 61 4 110 16 158 37z"/>
+    <path d="M218 143c52-38 105-47 159-21-61 4-110 16-158 37z"/>
+    <path d="M211 170c-57-26-108-24-153 5 55-4 102 2 151 14z"/>
+    <path d="M219 170c57-26 108-24 153 5-55-4-102 2-151 14z"/>
+    <path d="M211 198c-45-13-84-8-119 12 43-1 81 5 118 20z"/>
+    <path d="M219 198c45-13 84-8 119 12-43-1-81 5-118 20z"/>
   </g>
-  <g fill="#0b5a49">
-    <path d="M126 303h39v49h-39z"/>
-    <path d="M181 277h39v75h-39z"/>
-    <path d="M236 237h40v115h-40z"/>
-    <path d="M106 294c75-37 134-86 183-151l-29-5 67-39-7 78-20-20c-53 68-115 119-191 151z"/>
+
+  <g fill="#0b5948">
+    <path d="M135 307h35v44h-35z"/>
+    <path d="M188 279h35v72h-35z"/>
+    <path d="M241 239h36v112h-36z"/>
   </g>
-  <text x="215" y="438" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="3" fill="#0b5a49">SANAD</text>
-  <text x="215" y="515" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="12" fill="#0b5a49">INVEST</text>
+
+  <g fill="none" stroke="#0b5948" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M116 291c55-30 101-65 142-119"/>
+  </g>
+  <path d="M246 164l63-35-12 71-19-23-27 31-23-18 31-35z" fill="#0b5948"/>
+
+  <text x="215" y="438" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="86" font-weight="900" letter-spacing="2" fill="#0b5948">SANAD</text>
+  <text x="215" y="515" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="800" letter-spacing="12" fill="#0b5948">INVEST</text>
 </svg>
